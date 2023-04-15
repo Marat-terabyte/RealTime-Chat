@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Chat" Height="450" Width="800">
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Chat" Height="550" Width="1000">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0" MouseDown="MoveWindow">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Width="35" Click="MinimizeWindow">_</Button>
+                <Button Width="35" Click="ResizeWindow">||</Button>
+                <Button Width="35" Click="CloseWindow">X</Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
     </Grid>
 </Window>

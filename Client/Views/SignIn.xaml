@@ -1,0 +1,45 @@
+﻿<Page x:Class="Client.Views.SignIn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Client.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="525" d:DesignWidth="1000"
+      Title="SignIn">
+
+    <Grid Background="White">
+        <StackPanel Width="450"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Margin="0 0 0 20" HorizontalAlignment="Center">
+                <TextBlock FontSize="25">Sign in</TextBlock>
+            </StackPanel>
+
+            <StackPanel>
+                <StackPanel Margin="0 0 0 15">
+                    <TextBlock FontSize="14">Username:</TextBlock>
+                    <TextBox FontSize="18" Height="24" TextAlignment="Center"></TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="0 0 0 10">
+                    <TextBlock FontSize="14">Password:</TextBlock>
+                    <PasswordBox FontSize="18" Height="24" HorizontalContentAlignment="Center"></PasswordBox>
+                </StackPanel>
+
+                <StackPanel Margin="0 0 0 10" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <CheckBox Margin="0 0 5 0 "></CheckBox>
+                    <TextBlock FontSize="13">Remember me</TextBlock>
+                </StackPanel>
+
+                <Button FontSize="20" Margin="0 0 0 10" Command="{Binding SignInCommand}">Sign in</Button>
+
+                <StackPanel Orientation="Horizontal">
+                    <Grid Width="450">
+                        <Button FontSize="15" HorizontalAlignment="Left" Command="{Binding ShowSignUpPageCommand}">Sign up</Button>
+                        <Button FontSize="15" HorizontalAlignment="Right" Command="{Binding ShowRememberPasswordPageCommand}">Forgot password?</Button>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
