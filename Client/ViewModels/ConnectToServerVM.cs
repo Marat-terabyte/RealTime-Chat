@@ -12,6 +12,7 @@ namespace Client.ViewModels
     class ConnectToServerVM
     {
         private Window _window;
+        private Socket _client;
 
         public ConnectToServerVM(Window window)
         {
@@ -21,14 +22,14 @@ namespace Client.ViewModels
 
         private async void Connect()
         {
-            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 7070);
 
             while (true)
             {
                 try
                 {
-                    client.Connect(ipEndPoint);
+                    _client.Connect(ipEndPoint);
                     break;
                 }
                 catch (SocketException)
@@ -43,7 +44,7 @@ namespace Client.ViewModels
 
         private void OpenMainWindow()
         {
-            new MainWindow().Show();
+            new MainWindow(_client).Show();
             CloseWindow();
         }
 
