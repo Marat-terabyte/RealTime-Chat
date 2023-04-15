@@ -1,10 +1,13 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using MySql.Data.MySqlClient;
 
 namespace Server
 {
     internal class Program
     {
+        private static Dictionary<Socket, string> _users = new Dictionary<Socket, string>();
+
         static void Main(string[] args)
         {
             Socket server = CreateSocket();
@@ -12,6 +15,7 @@ namespace Server
             while (true)
             {
                 Socket conn = server.Accept();
+                InteractWithClient(conn);
             }
         }
 
@@ -24,6 +28,17 @@ namespace Server
             socket.Listen();
 
             return socket;
+        }
+
+        private static async void InteractWithClient(Socket conn)
+        {
+            await Task.Run(() =>
+            {
+                while(true)
+                {
+                    
+                }
+            });
         }
     }
 }
