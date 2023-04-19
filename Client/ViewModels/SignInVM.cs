@@ -1,11 +1,15 @@
 ﻿using Client.Views;
+using Models;
+using SocketData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Client.ViewModels
 {
@@ -13,6 +17,8 @@ namespace Client.ViewModels
     {
         private readonly Frame _frame;
         private readonly Socket _client;
+
+        public Account Account { get; set; }
 
         public RelayCommand ShowSignUpPageCommand { get; }
         public RelayCommand ShowRememberPasswordPageCommand { get; }
@@ -23,6 +29,8 @@ namespace Client.ViewModels
             _frame = frame;
             _client = socket;
 
+            this.Account = new Account();
+
             ShowSignUpPageCommand = new RelayCommand(o => ShowSignUpPage());
             ShowRememberPasswordPageCommand = new RelayCommand(o => ShowRememberPasswordPage());
             SignInCommand = new RelayCommand(o => SignIn());
@@ -32,9 +40,28 @@ namespace Client.ViewModels
 
         private void ShowRememberPasswordPage() => _frame.Content = new RememberPassword(_frame, _client);
 
-        private void SignIn()
+        private async void SignIn()
         {
-            ;
+            bool isSignIn = false;
+
+            await Task.Run(() =>
+            {
+                bool isUsernameValid = FieldChecker.IsValidStr(Account.Username);
+                bool isPasswordValid = FieldChecker.IsValidPassword(Account.Password);
+
+                if (isUsernameValid && isPasswordValid)
+                {
+                    new Data<string>(_client).Send("0", 16);
+                    new Data<Account>(_client).Send(this.Account, 1024);
+
+                    isSignIn = Convert.ToBoolean(new Data<string>(_client).Receive(16));
+                }
+            });
+
+            if (isSignIn)
+                return;
+
+            MessageBox.Show("Wrong username or password!");
         }
     }
 }

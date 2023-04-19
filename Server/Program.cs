@@ -1,16 +1,19 @@
 ﻿using System.Net;
 using System.Net.Sockets;
-using MySql.Data.MySqlClient;
+using Models;
+using SocketData;
 
 namespace Server
 {
     internal class Program
     {
         private static Dictionary<Socket, string> _users = new Dictionary<Socket, string>();
+        private static DatabaseContext _databaseContext = new DatabaseContext();
 
         static void Main(string[] args)
         {
             Socket server = CreateSocket();
+            _databaseContext.ConnectToDatabase("localhost", "root", "realtime_chat", "B7@5#8$a");
 
             while (true)
             {
@@ -32,13 +35,40 @@ namespace Server
 
         private static async void InteractWithClient(Socket conn)
         {
+            // 0 - Sign in
+            // 1 - Sign up
+            // 2 - Remember password
+
             await Task.Run(() =>
             {
                 while(true)
                 {
-                    
+                    string? choice = new Data<string>(conn).Receive(16);
+
+                    if (choice is null)
+                        continue;
+
+                    if (choice.Equals("0"))
+                    {
+                        Account? account = new Data<Account>(conn).Receive(1024);
+
+                        bool isSignIn = _databaseContext.SignIn(account);
+                        new Data<string>(conn).Send(isSignIn.ToString(), 16);
+                    }
+                    else if (choice.Equals("1"))
+                        ;
+                    else if (choice.Equals("2"))
+                        ;
+                    else
+                        DisconnectUser(conn);
                 }
             });
+        }
+
+        private static void DisconnectUser(Socket socket)
+        {
+            socket.Disconnect(true);
+            socket.Close();
         }
     }
 }

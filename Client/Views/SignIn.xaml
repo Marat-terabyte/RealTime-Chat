@@ -15,22 +15,24 @@
                 <TextBlock FontSize="25">Sign in</TextBlock>
             </StackPanel>
 
-            <StackPanel>
+            <StackPanel Margin="0 0 0 10" DataContext="{Binding Account}">
                 <StackPanel Margin="0 0 0 15">
                     <TextBlock FontSize="14">Username:</TextBlock>
-                    <TextBox FontSize="18" Height="24" TextAlignment="Center"></TextBox>
+                    <TextBox FontSize="18" Height="24" TextAlignment="Center" Text="{Binding Username}"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="0 0 0 10">
                     <TextBlock FontSize="14">Password:</TextBlock>
-                    <PasswordBox FontSize="18" Height="24" HorizontalContentAlignment="Center"></PasswordBox>
+                    <TextBox FontSize="18" Height="24" HorizontalContentAlignment="Center" Text="{Binding Password}"></TextBox>
                 </StackPanel>
 
-                <StackPanel Margin="0 0 0 10" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <CheckBox Margin="0 0 5 0 "></CheckBox>
                     <TextBlock FontSize="13">Remember me</TextBlock>
                 </StackPanel>
-
+            </StackPanel>
+            
+            <StackPanel>
                 <Button FontSize="20" Margin="0 0 0 10" Command="{Binding SignInCommand}">Sign in</Button>
 
                 <StackPanel Orientation="Horizontal">
