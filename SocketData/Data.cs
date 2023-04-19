@@ -33,9 +33,9 @@ namespace SocketData
             string json = Encoding.UTF8.GetString(bytes);
             int len = json.IndexOf(_endOfFile);
 
-            string text = json[..len];
+            json = json[..len];
             
-            T? data = JsonSerializer.Deserialize<T>(text);
+            T? data = JsonSerializer.Deserialize<T>(json);
 
             return data;
         }
