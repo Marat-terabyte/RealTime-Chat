@@ -7,9 +7,9 @@ using System.Windows.Controls;
 
 namespace Client
 {
-    internal class Field
+    internal static class FieldChecker
     {
-        public bool IsValid(string str)
+        public static bool IsValid(string str)
         {
             var forbiddenChars = new HashSet<char>
             {
@@ -19,23 +19,23 @@ namespace Client
             foreach (char c in str)
             {
                 if (forbiddenChars.Contains(c))
-                    return true;
+                    return false;
             }
 
-            return false;
+            return true;
         }
 
-        public bool IsValidPassword(string password)
+        public static bool IsValidPassword(string? password)
         {
-            if (password.Length < 8)
+            if (password?.Length < 8 || password == null)
                 return false;
 
             return IsValid(password);
         }
 
-        public bool IsValidStr(string text)
+        public static bool IsValidStr(string? text)
         {
-            if (text.Length < 1)
+            if (text?.Length <= 1 || text == null)
                 return false;
 
             return IsValid(text);
