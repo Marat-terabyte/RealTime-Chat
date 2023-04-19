@@ -32,5 +32,23 @@ namespace Server
 
             return true;
         }
+
+        public bool SignUp(Account account)
+        {
+            string query = $"INSERT INTO users(username, secret_word, password) " +
+                $"VALUES('{account.Username}', '{account.SecretWord}', '{account.Password}');";
+
+            try
+            {
+                MySqlCommand command = new MySqlCommand(query, _connection);
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -48,15 +48,18 @@ namespace Server
                     if (choice is null)
                         continue;
 
+                    Account? account = new Data<Account>(conn).Receive(1024);
+
                     if (choice.Equals("0"))
                     {
-                        Account? account = new Data<Account>(conn).Receive(1024);
-
                         bool isSignIn = _databaseContext.SignIn(account);
                         new Data<string>(conn).Send(isSignIn.ToString(), 16);
                     }
                     else if (choice.Equals("1"))
-                        ;
+                    {
+                        bool isSignUp = _databaseContext.SignUp(account);
+                        new Data<string>(conn).Send(isSignUp.ToString(), 16);
+                    }
                     else if (choice.Equals("2"))
                         ;
                     else
