@@ -15,4 +15,9 @@
     <Page Include="App.xaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\SocketData\SocketData.csproj" />
+  </ItemGroup>
+
 </Project>
