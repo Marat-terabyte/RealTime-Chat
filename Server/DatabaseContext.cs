@@ -24,9 +24,8 @@ namespace Server
         {
             string query = $"SELECT password FROM users WHERE username = '{account.Username}';";
 
-            MySqlCommand command = new MySqlCommand(query, _connection);
-            string? password = command.ExecuteScalar() as string;
-            
+            string? password = GetPassword(account);
+
             if (password == null || !account.Password.Equals(password))
                 return false;
 
@@ -49,6 +48,16 @@ namespace Server
             }
 
             return true;
+        }
+
+        public string? GetPassword(Account account)
+        {
+            string query = $"SELECT password FROM users WHERE username = '{account.Username}'";
+
+            MySqlCommand command = new MySqlCommand(query, _connection);
+            string? password = command.ExecuteScalar() as string;
+
+            return password;
         }
     }
 }
