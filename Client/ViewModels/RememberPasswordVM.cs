@@ -28,21 +28,23 @@ namespace Client.ViewModels
             this._client = socket;
 
             ShowSignInCommand = new RelayCommand(o => ShowSignIn());
-            RememberPasswordCommand = new RelayCommand(o => RememberPassword());
+            RememberPasswordCommand = new RelayCommand(RememberPassword);
 
             Account = new Account();
         }
 
         private void ShowSignIn() => _frame.Content = new SignIn(_frame, _client);
 
-        private async void RememberPassword()
+        private async void RememberPassword(object obj)
         {
             string? password = null;
 
             await Task.Run(() =>
             {
+                Account.SecretWord = ((PasswordBox) obj).Password;
+
                 bool isUsernameValid = FieldChecker.IsValidStr(Account.Username);
-                bool isSecretWordValid = FieldChecker.IsValidStr(Account.Username);
+                bool isSecretWordValid = FieldChecker.IsValidStr(Account.SecretWord);
 
                 if (isUsernameValid && isSecretWordValid)
                 {

@@ -79,7 +79,7 @@
         <Setter Property = "Foreground" Value = "#062743"></Setter>
         <Setter Property = "BorderThickness" Value = "0 0 0 1"></Setter>
         <Setter Property = "BorderBrush" Value = "#062743"></Setter>
-        <Setter Property = "Background" Value = "#F8FCFB"></Setter>
+        <Setter Property = "Background" Value = "#F6F6F6"></Setter>
         <Setter Property = "VerticalContentAlignment" Value = "Center"></Setter>
         <Setter Property = "HorizontalContentAlignment" Value = "Center"></Setter>
         <Style.Triggers>
@@ -88,7 +88,7 @@
                     <BeginStoryboard>
                         <Storyboard TargetProperty = "Width">
                             <DoubleAnimation From = "0" 
-                                             To = "270" 
+                                             To = "450" 
                                              AutoReverse = "False" 
                                              Duration = "0:0:0.3"/>
                         </Storyboard>

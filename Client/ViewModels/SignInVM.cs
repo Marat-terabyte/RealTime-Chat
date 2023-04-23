@@ -33,19 +33,21 @@ namespace Client.ViewModels
 
             ShowSignUpPageCommand = new RelayCommand(o => ShowSignUpPage());
             ShowRememberPasswordPageCommand = new RelayCommand(o => ShowRememberPasswordPage());
-            SignInCommand = new RelayCommand(o => SignIn());
+            SignInCommand = new RelayCommand(SignIn);
         }
 
         private void ShowSignUpPage() => _frame.Content = new SignUp(_frame, _client);
 
         private void ShowRememberPasswordPage() => _frame.Content = new RememberPassword(_frame, _client);
 
-        private async void SignIn()
+        private async void SignIn(object obj)
         {
             bool isSignIn = false;
 
             await Task.Run(() =>
             {
+                Account.Password = ((PasswordBox) obj).Password;
+
                 bool isUsernameValid = FieldChecker.IsValidStr(Account.Username);
                 bool isPasswordValid = FieldChecker.IsValidPassword(Account.Password);
 

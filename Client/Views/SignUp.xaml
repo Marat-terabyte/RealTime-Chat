@@ -28,15 +28,18 @@
 
                 <StackPanel>
                     <TextBlock FontSize="14">Password:</TextBlock>
-                    <TextBox FontSize="18" Height="24" HorizontalContentAlignment="Center" Text="{Binding Password}" Style="{DynamicResource FieldStyle}"></TextBox>
+                    <PasswordBox x:Name="passwordField" FontSize="18" Height="24" HorizontalContentAlignment="Center" Style="{DynamicResource PasswordFieldStyle}"></PasswordBox>
                 </StackPanel>
             </StackPanel>
             
             <StackPanel>
-                <Button Height="35" FontSize="20" Margin="0 0 0 15" Command="{Binding SignUpCommand}" Style="{DynamicResource ButtonStyle}">Sign up</Button>
+                <Button Height="35" FontSize="20" Margin="0 0 0 15" Command="{Binding SignUpCommand}"
+                        CommandParameter="{Binding ElementName=passwordField}"
+                        Style="{DynamicResource ButtonStyle}">Sign up</Button>
 
                 <StackPanel HorizontalAlignment="Center">
-                    <Button FontSize="15" Command="{Binding ShowSignInPageCommand}" Style="{DynamicResource ToolButtonStyle}">Sign in</Button>
+                    <Button FontSize="15" Command="{Binding ShowSignInPageCommand}"
+                            Style="{DynamicResource ToolButtonStyle}">Sign in</Button>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

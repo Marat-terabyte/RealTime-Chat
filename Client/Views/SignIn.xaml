@@ -23,7 +23,7 @@
 
                 <StackPanel Margin="0 0 0 10">
                     <TextBlock FontSize="14" Style="{DynamicResource TextStyle}">Password:</TextBlock>
-                    <TextBox FontSize="18" Height="24" HorizontalContentAlignment="Center" Text="{Binding Password}" Style="{DynamicResource FieldStyle}"></TextBox>
+                    <PasswordBox x:Name="passwordField" FontSize="18" Height="24" HorizontalContentAlignment="Center" Style="{DynamicResource PasswordFieldStyle}"></PasswordBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -33,12 +33,17 @@
             </StackPanel>
             
             <StackPanel>
-                <Button Height="35" FontSize="20" Margin="0 0 0 15" Command="{Binding SignInCommand}" Style="{DynamicResource ButtonStyle}">Sign in</Button>
+                <Button Height="35" FontSize="20" Margin="0 0 0 15"
+                        Command="{Binding SignInCommand}"
+                        CommandParameter="{Binding ElementName=passwordField}"
+                        Style="{DynamicResource ButtonStyle}">Sign in</Button>
 
                 <StackPanel Orientation="Horizontal">
                     <Grid Width="450">
                         <Button FontSize="15" Width="55" HorizontalAlignment="Left" Command="{Binding ShowSignUpPageCommand}" Style="{DynamicResource ToolButtonStyle}">Sign up</Button>
-                        <Button FontSize="15" Width="125" HorizontalAlignment="Right" Command="{Binding ShowRememberPasswordPageCommand}" Style="{DynamicResource ToolButtonStyle}">Forgot password?</Button>
+                        <Button FontSize="15" Width="125" HorizontalAlignment="Right" 
+                                Command="{Binding ShowRememberPasswordPageCommand}"
+                                Style="{DynamicResource ToolButtonStyle}">Forgot password?</Button>
                     </Grid>
                 </StackPanel>
             </StackPanel>

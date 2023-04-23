@@ -28,19 +28,21 @@ namespace Client.ViewModels
             this._client = socket;
 
             ShowSignInPageCommand = new RelayCommand(o => ShowSignInPage());
-            SignUpCommand = new RelayCommand(o => SignUp());
+            SignUpCommand = new RelayCommand(SignUp);
 
             Account = new Account();
         }
 
         private void ShowSignInPage() => _frame.Content = new SignIn(_frame, _client);
 
-        private async void SignUp()
+        private async void SignUp(object obj)
         {
             bool isSignUp = false;
 
             await Task.Run(() =>
             {
+                Account.Password = ((PasswordBox) obj).Password;
+
                 bool isUsernameValid = FieldChecker.IsValidStr(Account.Username);
                 bool isSecretWordValid = FieldChecker.IsValidStr(Account.SecretWord);
                 bool isPasswordValid = FieldChecker.IsValidPassword(Account.Password);
