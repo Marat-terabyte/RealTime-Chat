@@ -59,8 +59,10 @@ namespace Client.ViewModels
             });
 
             if (isSignIn)
+            {
+                _frame.Content = new Chat(_frame, _client, Account.Username);
                 return;
-
+            }
             MessageBox.Show("Wrong username or password!");
         }
     }
