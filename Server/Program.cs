@@ -13,7 +13,7 @@ namespace Server
         static void Main(string[] args)
         {
             Socket server = CreateSocket();
-            _databaseContext.ConnectToDatabase("localhost", "root", "realtime_chat", "11111111");
+            _databaseContext.ConnectToDatabase("localhost", "root", "realtime_chat", "B7@5#8$a");
 
             while (true)
             {
@@ -54,6 +54,9 @@ namespace Server
                     {
                         bool isSignIn = _databaseContext.SignIn(account);
                         new Data<string>(conn).Send(isSignIn.ToString(), 16);
+
+                        if (isSignIn)
+                            Listen(conn);
                     }
                     
                     else if (choice.Equals("1"))
@@ -72,6 +75,23 @@ namespace Server
                         DisconnectUser(conn);
                 }
             });
+        }
+
+        private static void Listen(Socket socket)
+        {
+            while (true)
+            {
+                Message? message = new Data<Message>(socket).Receive(2048);
+
+                if (message == null)
+                    continue;
+
+                foreach (var user in _users)
+                {
+                    if (user.Key != socket)
+                        new Data<Message>(user.Key).Send(message, 2048);
+                }
+            }
         }
 
         private static void DisconnectUser(Socket socket)
