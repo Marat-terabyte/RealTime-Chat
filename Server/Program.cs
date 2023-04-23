@@ -54,6 +54,12 @@ namespace Server
                     {
                         bool isSignIn = _databaseContext.SignIn(account);
                         new Data<string>(conn).Send(isSignIn.ToString(), 16);
+
+                        if (isSignIn)
+                        {
+                            _users.Add(conn, account.Username);
+                            Listen(conn);
+                        }
                     }
                     
                     else if (choice.Equals("1"))
@@ -72,6 +78,23 @@ namespace Server
                         DisconnectUser(conn);
                 }
             });
+        }
+
+        private static void Listen(Socket socket)
+        {
+            while (true)
+            {
+                Message? message = new Data<Message>(socket).Receive(2048);
+
+                if (message == null)
+                    continue;
+
+                foreach (var user in _users)
+                {
+                    if (user.Key != socket)
+                        new Data<Message>(user.Key).Send(message, 2048);
+                }
+            }
         }
 
         private static void DisconnectUser(Socket socket)
