@@ -5,38 +5,38 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="525" d:DesignWidth="1000"
+      d:DesignHeight="570" d:DesignWidth="1200"
       Title="SignUp">
 
-    <Grid Background="White">
+    <Grid Style="{DynamicResource MainGridStyle}">
         <StackPanel Width="450"
                     VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Margin="0 0 0 20" HorizontalAlignment="Center">
-                <TextBlock FontSize="25">Sign up</TextBlock>
+                <TextBlock FontSize="25" Style="{DynamicResource TextStyle}">Sign up</TextBlock>
             </StackPanel>
 
             <StackPanel Margin="0 0 0 15" DataContext="{Binding Account}">
                 <StackPanel Margin="0 0 0 15">
-                    <TextBlock FontSize="14">Username:</TextBlock>
-                    <TextBox FontSize="18" Height="24" TextAlignment="Center" Text="{Binding Username}"></TextBox>
+                    <TextBlock FontSize="14" Style="{DynamicResource TextStyle}">Username:</TextBlock>
+                    <TextBox FontSize="18" Height="24" TextAlignment="Center" Text="{Binding Username}" Style="{DynamicResource FieldStyle}"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="0 0 0 10">
-                    <TextBlock FontSize="14">Secret word:</TextBlock>
-                    <TextBox FontSize="18" Height="24" HorizontalContentAlignment="Center" Text="{Binding SecretWord}"></TextBox>
+                    <TextBlock FontSize="14" Style="{DynamicResource TextStyle}">Secret word:</TextBlock>
+                    <TextBox FontSize="18" Height="24" HorizontalContentAlignment="Center" Text="{Binding SecretWord}" Style="{DynamicResource FieldStyle}"></TextBox>
                 </StackPanel>
 
                 <StackPanel>
                     <TextBlock FontSize="14">Password:</TextBlock>
-                    <TextBox FontSize="18" Height="24" HorizontalContentAlignment="Center" Text="{Binding Password}"></TextBox>
+                    <TextBox FontSize="18" Height="24" HorizontalContentAlignment="Center" Text="{Binding Password}" Style="{DynamicResource FieldStyle}"></TextBox>
                 </StackPanel>
             </StackPanel>
             
             <StackPanel>
-                <Button FontSize="20" Margin="0 0 0 10" Command="{Binding SignUpCommand}">Sign up</Button>
+                <Button Height="35" FontSize="20" Margin="0 0 0 15" Command="{Binding SignUpCommand}" Style="{DynamicResource ButtonStyle}">Sign up</Button>
 
                 <StackPanel HorizontalAlignment="Center">
-                    <Button FontSize="15" Command="{Binding ShowSignInPageCommand}">Sign in</Button>
+                    <Button FontSize="15" Command="{Binding ShowSignInPageCommand}" Style="{DynamicResource ToolButtonStyle}">Sign in</Button>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

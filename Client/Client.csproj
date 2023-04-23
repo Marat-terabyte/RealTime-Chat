@@ -20,4 +20,8 @@
     <ProjectReference Include="..\SocketData\SocketData.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+
 </Project>

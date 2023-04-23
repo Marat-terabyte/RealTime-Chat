@@ -20,6 +20,6 @@ namespace Client
 
         public bool CanExecute(object? parameter) => true;
 
-        public void Execute(object? parameter) => this._action(_action);
+        public void Execute(object? parameter) => this._action(parameter);
     }
 }

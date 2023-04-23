@@ -7,22 +7,22 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="Chat" Height="550" Width="1000">
+        Title="Chat" Height="650" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" MouseDown="MoveWindow">
+        <Grid Grid.Row="0" MouseDown="MoveWindow" Style="{DynamicResource ToolBarStyle}">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Width="35" Click="MinimizeWindow">_</Button>
-                <Button Width="35" Click="ResizeWindow">||</Button>
-                <Button Width="35" Click="CloseWindow">X</Button>
+                <Button Width="35" Click="MinimizeWindow" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Foreground="#F6F6F6" Style="{DynamicResource ToolButtonStyle}">-</Button>
+                <Button Width="35" Click="ResizeWindow" Foreground="#F6F6F6" Style="{DynamicResource ToolButtonStyle}">/\</Button>
+                <Button Width="35" Click="CloseWindow" FontSize="15" Foreground="#FC345C" Style="{DynamicResource ToolButtonStyle}">X</Button>
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Style="{DynamicResource MainGridStyle}">
             <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>

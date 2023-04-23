@@ -34,7 +34,6 @@ namespace Client.ViewModels
                 }
                 catch (SocketException)
                 {
-                    MessageBox.Show("Error");
                     await Task.Delay(3000);
                 }
             }

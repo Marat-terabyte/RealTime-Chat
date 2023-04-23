@@ -11,9 +11,9 @@
         ResizeMode="NoResize"
         Height="350" Width="350"
         MouseDown="MoveWindow">
-    <Grid>
+    <Grid Style="{DynamicResource MainGridStyle}">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock FontSize="24">Connection...</TextBlock>
+            <TextBlock FontSize="24" Style="{DynamicResource TextStyle}">Connection...</TextBlock>
         </StackPanel>
     </Grid>
 </Window>

@@ -5,8 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client.Views" xmlns:viewmodels="clr-namespace:Client.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="1000"
-      Background="White"
+      d:DesignHeight="570" d:DesignWidth="1200"
       Title="Chat">
 
     <Grid>
@@ -19,15 +18,16 @@
             <ListBox ItemsSource="{Binding Messages}" 
                      ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
                      HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                     Focusable="False">
+                     Focusable="False"
+                     Style="{DynamicResource ChatStyle}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <ListBoxItem Focusable="False" IsSelected="False">
                             <Border>
                                 <StackPanel HorizontalAlignment="{Binding Alignment}">
-                                    <TextBlock Text="{Binding From}" FontSize="12" HorizontalAlignment="Left"></TextBlock>
-                                    <TextBlock Text="{Binding Text}" FontSize="15"></TextBlock>
-                                    <TextBlock Text="{Binding Time}" FontSize="12" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBlock Text="{Binding From}" FontSize="12" HorizontalAlignment="Left" Style="{DynamicResource TextStyle}"></TextBlock>
+                                    <TextBlock Text="{Binding Text}" FontSize="15" Style="{DynamicResource TextStyle}"></TextBlock>
+                                    <TextBlock Text="{Binding Time}" FontSize="12" HorizontalAlignment="Right" Style="{DynamicResource TextStyle}"></TextBlock>
                                 </StackPanel>
                             </Border>
                         </ListBoxItem>
@@ -36,17 +36,19 @@
             </ListBox>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Style="{DynamicResource MainGridStyle}">
             <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
                 
                 <StackPanel Margin="0 0 25 0">
-                    <TextBox x:Name="messageField" Height="30" Width="420"></TextBox>
+                    <TextBox x:Name="messageField" Height="30" Width="420" Style="{DynamicResource FieldStyle}"></TextBox>
                 </StackPanel>
                 
                 <StackPanel VerticalAlignment="Center">
-                    <Button Height="25" Width="120" Command="{Binding SendMessageCommand}" CommandParameter="{Binding ElementName=messageField}">Send</Button>
+                    <Button Height="25" Width="120" Command="{Binding SendMessageCommand}"
+                            CommandParameter="{Binding ElementName=messageField}"
+                            Style="{DynamicResource ButtonStyle}">Send</Button>
                 </StackPanel>
             </StackPanel>
         </Grid>
