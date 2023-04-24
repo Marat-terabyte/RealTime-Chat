@@ -27,7 +27,7 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBlock FontSize="14">Password:</TextBlock>
+                    <TextBlock FontSize="14" Style="{DynamicResource TextStyle}">Password:</TextBlock>
                     <PasswordBox x:Name="passwordField" FontSize="18" Height="24" HorizontalContentAlignment="Center" Style="{DynamicResource PasswordFieldStyle}"></PasswordBox>
                 </StackPanel>
             </StackPanel>
