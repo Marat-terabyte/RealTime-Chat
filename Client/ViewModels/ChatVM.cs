@@ -33,14 +33,16 @@ namespace Client.ViewModels
 
         private async void SendMessage(object obj)
         {
+            TextBox textBox = (TextBox) obj;
             Message message = new Message();
 
             message.Alignment = HorizontalAlignment.Right;
-            message.Text = ((TextBox) obj).Text;
+            message.Text = textBox.Text;
             message.Time = DateTime.Now.ToString("t");
             message.From = _username;
 
             Messages.Add(message);
+            textBox.Clear();
 
             await Task.Run(() =>
             {
