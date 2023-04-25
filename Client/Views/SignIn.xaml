@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Client.Views"
       mc:Ignorable="d" 
       d:DesignHeight="570" d:DesignWidth="1200"
-      Title="SignIn">
+      Title="Sign in">
 
     <Grid Style="{DynamicResource MainGridStyle}">
         <StackPanel Width="450"

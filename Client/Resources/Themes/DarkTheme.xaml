@@ -108,5 +108,20 @@
         <Setter Property="Foreground"   Value="#F6F6F6"></Setter>
         <Setter Property="TextWrapping" Value="Wrap"></Setter>
     </Style>
-    
+
+    <Style x:Key="MessageBorder" TargetType="Border">
+        <Style.Setters>
+            <Setter Property="Border.Background" Value="#2C2E3E" />
+            <Setter Property="Border.CornerRadius" Value="13" />
+            <Setter Property="Border.MinWidth" Value="100" />
+            <Setter Property="Border.MaxWidth" Value="450" />
+            <Setter Property="Border.Padding" Value="8" />
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="MessageStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#F6F6F6" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
 </ResourceDictionary>
