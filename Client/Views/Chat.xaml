@@ -26,7 +26,7 @@
                             <Border HorizontalAlignment="{Binding Alignment}" Style="{DynamicResource MessageBorder}">
                                 <StackPanel>
                                     <TextBlock Text="{Binding From}" FontSize="12" HorizontalAlignment="Left" Margin="0 0 0 5" Style="{DynamicResource MessageStyle}"></TextBlock>
-                                    <TextBlock Text="{Binding Text}" FontSize="15" Style="{DynamicResource MessageStyle}"></TextBlock>
+                                    <TextBlock Text="{Binding Text}" FontSize="15" Margin="0 0 0 5" Style="{DynamicResource MessageStyle}"></TextBlock>
                                     <TextBlock Text="{Binding Time}" FontSize="12" HorizontalAlignment="Right" Style="{DynamicResource MessageStyle}"></TextBlock>
                                 </StackPanel>
                             </Border>
@@ -42,7 +42,11 @@
                         Orientation="Horizontal">
                 
                 <StackPanel Margin="0 0 25 0">
-                    <TextBox x:Name="messageField" Height="30" Width="420" HorizontalContentAlignment="Left" Style="{DynamicResource FieldStyle}"></TextBox>
+                    <TextBox x:Name="messageField" Height="30" Width="420" HorizontalContentAlignment="Left" Style="{DynamicResource FieldStyle}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SendMessageCommand}" CommandParameter="{Binding ElementName=messageField}"></KeyBinding>
+                        </TextBox.InputBindings>
+                    </TextBox>
                 </StackPanel>
                 
                 <StackPanel VerticalAlignment="Center">
