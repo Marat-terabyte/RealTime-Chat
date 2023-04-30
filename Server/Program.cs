@@ -43,10 +43,16 @@ namespace Server
             {
                 while(true)
                 {
-                    string? choice = new Data<string>(conn).Receive(16);
+                    string? choice = new Data<Message>(conn).Receive(206).Text;
 
                     if (choice is null)
                         continue;
+
+                    if (choice == "{!Disconnect}")
+                    {
+                        DisconnectUser(conn);
+                        break;
+                    }
 
                     Account? account = new Data<Account>(conn).Receive(1024);
 
@@ -59,6 +65,7 @@ namespace Server
                         {
                             _users.Add(conn, account.Username);
                             Listen(conn);
+                            break;
                         }
                     }
                     
@@ -73,9 +80,6 @@ namespace Server
                         string? password = _databaseContext.GetPassword(account);
                         new Data<string>(conn).Send(password, 1024);
                     }
-                    
-                    else
-                        DisconnectUser(conn);
                 }
             });
         }
@@ -89,17 +93,34 @@ namespace Server
                 if (message == null)
                     continue;
 
-                foreach (var user in _users)
+                if (message.Text == "{!Disconnect}")
                 {
-                    if (user.Key != socket)
-                        new Data<Message>(user.Key).Send(message, 2048);
+                    DisconnectUser(socket);
+
+                    message.From = "";
+                    message.Text = $"{_users[socket]} was disconnected";
+                    SendToAll(socket, message);
+
+                    break;
                 }
+
+                SendToAll(socket, message);
+            }
+        }
+
+        private static void SendToAll(Socket socket, Message message)
+        {
+            foreach (var user in _users)
+            {
+                if (user.Key != socket)
+                    new Data<Message>(user.Key).Send(message, 2048);
+
             }
         }
 
         private static void DisconnectUser(Socket socket)
         {
-            socket.Disconnect(true);
+            socket.Disconnect(false);
             socket.Close();
         }
     }

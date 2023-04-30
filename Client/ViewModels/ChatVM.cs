@@ -52,18 +52,27 @@ namespace Client.ViewModels
 
         private async void ReceiveMessages()
         {
-            while (true)
+            try
             {
-                Message? data = new Message();
+                while (true)
+                {
+                    Message? data = new Message();
 
-                await Task.Run(() =>
-                { 
-                    data = new Data<Message>(_socket).Receive(2048);
-                    data.Alignment = HorizontalAlignment.Left;
-                });
+                    await Task.Run(() =>
+                    {
+                        data = new Data<Message>(_socket).Receive(2048);
 
-                Messages.Add(data);
+                        if (data.From == "")
+                            data.Alignment = HorizontalAlignment.Center;
+                        
+                        else
+                            data.Alignment = HorizontalAlignment.Left;
+                    });
+
+                    Messages.Add(data);
+                }
             }
+            catch { return; }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Client.Views;
+﻿using Client.Models;
+using Client.Views;
+using SocketData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +21,13 @@ namespace Client
 {
     public partial class MainWindow : Window
     {
+        private Socket _socket;
+
         public MainWindow(Socket socket)
         {
             InitializeComponent();
+            
+            _socket = socket;
             mainFrame.Content = new SignIn(mainFrame, socket);
         }
 
@@ -43,7 +49,13 @@ namespace Client
                 this.WindowState = WindowState.Normal;
         }
 
-        private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            Message message = new Message() { Text = "{!Disconnect}" };
+
+            new Data<Message>(_socket).Send(message, 206);
+            this.Close();
+        }
 
         private void MinimizeWindow(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
     }

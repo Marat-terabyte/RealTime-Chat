@@ -1,4 +1,5 @@
-﻿using Client.Views;
+﻿using Client.Models;
+using Client.Views;
 using Models;
 using SocketData;
 using System;
@@ -48,7 +49,9 @@ namespace Client.ViewModels
 
                 if (isUsernameValid && isSecretWordValid)
                 {
-                    new Data<string>(_client).Send("2", 16);
+                    Message message = new Message() { Text = "2" };
+
+                    new Data<Message>(_client).Send(message, 206);
                     new Data<Account>(_client).Send(Account, 1024);
                     password = new Data<string>(_client).Receive(1024);
                 }

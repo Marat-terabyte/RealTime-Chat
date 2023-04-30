@@ -1,4 +1,5 @@
-﻿using Client.Views;
+﻿using Client.Models;
+using Client.Views;
 using Models;
 using SocketData;
 using System;
@@ -53,7 +54,9 @@ namespace Client.ViewModels
 
                 if (isUsernameValid && isPasswordValid)
                 {
-                    new Data<string>(_client).Send("0", 16);
+                    Message message = new Message() { Text = "0" };
+
+                    new Data<Message>(_client).Send(message, 206);
                     new Data<Account>(_client).Send(this.Account, 1024);
 
                     isSignIn = Convert.ToBoolean(new Data<string>(_client).Receive(16));
