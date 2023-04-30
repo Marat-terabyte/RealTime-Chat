@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\-.png" />
+    <None Remove="Resources\Images\Resize-Window.png" />
+    <None Remove="Resources\Images\X.png" />
     <None Remove="Views\MainWindow.xaml.cs~RF494fd18.TMP" />
   </ItemGroup>
 
@@ -21,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Resource Include="Resources\Images\-.png" />
+    <Resource Include="Resources\Images\Resize-Window.png" />
+    <Resource Include="Resources\Images\X.png" />
   </ItemGroup>
 
 </Project>

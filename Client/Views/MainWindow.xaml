@@ -16,9 +16,15 @@
 
         <Grid Grid.Row="0" MouseDown="MoveWindow" Style="{DynamicResource ToolBarStyle}">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Width="35" Click="MinimizeWindow" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Foreground="#F6F6F6" Style="{DynamicResource ToolButtonStyle}">-</Button>
-                <Button Width="35" Click="ResizeWindow" Foreground="#F6F6F6" Style="{DynamicResource ToolButtonStyle}">/\</Button>
-                <Button Width="35" Click="CloseWindow" FontSize="15" Foreground="#FC345C" Style="{DynamicResource ToolButtonStyle}">X</Button>
+                <Button Width="35" Click="MinimizeWindow" FontSize="15" Style="{DynamicResource ToolButtonStyle}">
+                    <Image Width="15" Source="/Client;component/Resources/Images/-.png"/>
+                </Button>
+                <Button Width="35" Click="ResizeWindow" Style="{DynamicResource ToolButtonStyle}">
+                    <Image Source="/Client;component/Resources/Images/Resize-Window.png"/>
+                </Button>
+                <Button Width="35" Click="CloseWindow" FontSize="15" Style="{DynamicResource ToolButtonStyle}">
+                    <Image Source="/Client;component/Resources/Images/X.png" Width="15"/>
+                </Button>
             </StackPanel>
         </Grid>
 
