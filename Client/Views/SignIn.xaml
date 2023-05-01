@@ -18,12 +18,15 @@
             <StackPanel Margin="0 0 0 10" DataContext="{Binding Account}">
                 <StackPanel Margin="0 0 0 15">
                     <TextBlock FontSize="14" Style="{DynamicResource TextStyle}">Username:</TextBlock>
-                    <TextBox FontSize="18" Height="24" TextAlignment="Center" Text="{Binding Username}" Style="{DynamicResource FieldStyle}"></TextBox>
+                    <TextBox FontSize="18" Height="24" TextAlignment="Center"
+                             Text="{Binding Username , Mode=TwoWay}"
+                             Style="{DynamicResource FieldStyle}"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="0 0 0 10">
                     <TextBlock FontSize="14" Style="{DynamicResource TextStyle}">Password:</TextBlock>
-                    <PasswordBox x:Name="passwordField" FontSize="18" Height="24" HorizontalContentAlignment="Center" Style="{DynamicResource PasswordFieldStyle}"></PasswordBox>
+                    <PasswordBox x:Name="passwordField" FontSize="18" Height="24"
+                                 Style="{DynamicResource PasswordFieldStyle}"></PasswordBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

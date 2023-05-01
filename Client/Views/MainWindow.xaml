@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
         Title="Chat" Height="650" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
@@ -15,13 +16,21 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="MoveWindow" Style="{DynamicResource ToolBarStyle}">
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button Width="45" Style="{DynamicResource ToolButtonStyle}" Click="ChangeFrameToSettings">
+                    <Image Width="45" Source="/Client;component/Resources/Images/Gear.png"/>
+                </Button>
+            </StackPanel>
+            
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Width="35" Click="MinimizeWindow" FontSize="15" Style="{DynamicResource ToolButtonStyle}">
                     <Image Width="15" Source="/Client;component/Resources/Images/-.png"/>
                 </Button>
+
                 <Button Width="35" Click="ResizeWindow" Style="{DynamicResource ToolButtonStyle}">
                     <Image Source="/Client;component/Resources/Images/Resize-Window.png"/>
                 </Button>
+                
                 <Button Width="35" Click="CloseWindow" FontSize="15" Style="{DynamicResource ToolButtonStyle}">
                     <Image Source="/Client;component/Resources/Images/X.png" Width="15"/>
                 </Button>

@@ -1,0 +1,46 @@
+﻿<Page x:Class="Client.Views.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Client.Views" xmlns:viewmodels="clr-namespace:Client.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200"
+      Title="Settings">
+
+    <Page.DataContext>
+        <viewmodels:SettingsVM></viewmodels:SettingsVM>
+    </Page.DataContext>
+
+    <Grid Style="{DynamicResource MainGridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock FontSize="22" Style="{DynamicResource TextStyle}">Settings</TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel>
+                <TextBlock FontSize="19" HorizontalAlignment="Center" Margin="0 10 0 20" Style="{DynamicResource TextStyle}">Themes</TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Margin="0 0 40 0">
+                        <Button Height="280" Width="500" Margin="0 0 0 5" Command="{Binding ChangeThemeCommand}" CommandParameter="Light">
+                            <Image Source="/Client;component/Resources/Images/Light-Theme.png" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock FontSize="18" HorizontalAlignment="Center" Style="{DynamicResource TextStyle}">Light</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Button Height="280" Width="500" Margin="0 0 0 5" Command="{Binding ChangeThemeCommand}" CommandParameter="Dark">
+                            <Image Source="/Client;component/Resources/Images/Dark-Theme.png" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock FontSize="18" HorizontalAlignment="Center" Style="{DynamicResource TextStyle}">Dark</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
