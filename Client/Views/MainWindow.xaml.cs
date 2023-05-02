@@ -74,17 +74,14 @@ namespace Client
             mainFrame.Content = new Settings(mainFrame, _socket);
         }
 
-        private async void LoadTheme()
+        private void LoadTheme()
         {
-            await Task.Run(() =>
-            {
-                string? theme = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\RealTime-Chat").GetValue("Theme") as string;
+            string? theme = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\RealTime-Chat").GetValue("Theme") as string;
 
-                if (theme is null)
-                    return;
+            if (theme is null)
+                return;
 
-                Theme.ChangeTheme(theme);
-            });
+            Theme.ChangeTheme(theme);
         }
     }
 }
