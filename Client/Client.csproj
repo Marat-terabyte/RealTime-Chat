@@ -11,6 +11,7 @@
     <None Remove="Resources\Images\-.png" />
     <None Remove="Resources\Images\Dark-Theme.png" />
     <None Remove="Resources\Images\Gear.png" />
+    <None Remove="Resources\Images\Left-Arrow.png" />
     <None Remove="Resources\Images\Light-Theme.png" />
     <None Remove="Resources\Images\X.png" />
     <None Remove="Views\MainWindow.xaml.cs~RF494fd18.TMP" />
@@ -29,6 +30,7 @@
     <Resource Include="Resources\Images\-.png" />
     <Resource Include="Resources\Images\Dark-Theme.png" />
     <Resource Include="Resources\Images\Gear.png" />
+    <Resource Include="Resources\Images\Left-Arrow.png" />
     <Resource Include="Resources\Images\Light-Theme.png" />
     <Resource Include="Resources\Images\X.png" />
   </ItemGroup>
