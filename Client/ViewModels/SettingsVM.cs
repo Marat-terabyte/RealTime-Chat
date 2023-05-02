@@ -2,19 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Client.ViewModels
 {
     internal class SettingsVM
     {
-        public RelayCommand ChangeThemeCommand { get; set; }
+        private Frame _frame;
+        private Socket _socket;
 
-        public SettingsVM()
+        public RelayCommand ChangeThemeCommand { get; set; }
+        public RelayCommand GoBackCommand { get; set; }
+
+        public SettingsVM(Frame frame, Socket socket)
         {
+            _frame = frame;
+            _socket = socket;
+
             ChangeThemeCommand = new RelayCommand(o => ChangeTheme(o as string));
+            GoBackCommand = new RelayCommand(o => GoBack());
         }
 
         private async void ChangeTheme(string? theme)
@@ -26,6 +36,11 @@ namespace Client.ViewModels
 
                 Theme.ChangeTheme(theme);
             });
+        }
+
+        private void GoBack()
+        {
+            _frame.GoBack();
         }
     }
 }

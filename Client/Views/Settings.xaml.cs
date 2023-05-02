@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -21,15 +22,11 @@ namespace Client.Views
     /// </summary>
     public partial class Settings : Page
     {
-        private Frame _frame;
-        private Socket _socket;
-
         public Settings(Frame frame, Socket socket)
         {
             InitializeComponent();
 
-            _frame = frame;
-            _socket = socket;
+            DataContext = new SettingsVM(frame, socket);
         }
     }
 }
