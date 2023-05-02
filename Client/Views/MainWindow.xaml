@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
         WindowStyle="None"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True"
         Title="Chat" Height="650" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,13 +26,9 @@
                 <Button Width="35" Click="MinimizeWindow" FontSize="15" Style="{DynamicResource ToolButtonStyle}">
                     <Image Width="15" Source="/Client;component/Resources/Images/-.png"/>
                 </Button>
-
-                <Button Width="35" Click="ResizeWindow" Style="{DynamicResource ToolButtonStyle}">
-                    <Image Source="/Client;component/Resources/Images/Resize-Window.png"/>
-                </Button>
                 
-                <Button Width="35" Click="CloseWindow" FontSize="15" Style="{DynamicResource ToolButtonStyle}">
-                    <Image Source="/Client;component/Resources/Images/X.png" Width="15"/>
+                <Button Width="35" Click="CloseWindow" Style="{DynamicResource ToolButtonStyle}">
+                    <Image Width="15" Source="/Client;component/Resources/Images/X.png"/>
                 </Button>
             </StackPanel>
         </Grid>

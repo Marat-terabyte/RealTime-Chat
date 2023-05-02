@@ -44,15 +44,6 @@ namespace Client
             catch { ; }
         }
 
-        private void ResizeWindow(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Normal)
-                this.WindowState = WindowState.Maximized;
-
-            else
-                this.WindowState = WindowState.Normal;
-        }
-
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
             try
