@@ -99,6 +99,8 @@ namespace Server
 
                     message.From = "";
                     message.Text = $"{_users[socket]} was disconnected";
+                    _users.Remove(socket);
+
                     SendToAll(socket, message);
 
                     break;
