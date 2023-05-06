@@ -62,11 +62,14 @@ namespace Client.ViewModels
                     {
                         data = new Data<Message>(_socket).Receive(2048);
 
-                        if (data.From == "")
-                            data.Alignment = HorizontalAlignment.Center;
+                        if (data is not null)
+                        {
+                            if (data.From == "")
+                                data.Alignment = HorizontalAlignment.Center;
 
-                        else
-                            data.Alignment = HorizontalAlignment.Left;
+                            else
+                                data.Alignment = HorizontalAlignment.Left;
+                        }
                     });
 
                     Messages.Add(data);

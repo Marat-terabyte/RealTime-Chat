@@ -28,11 +28,6 @@
                     <PasswordBox x:Name="passwordField" FontSize="18" Height="24"
                                  Style="{DynamicResource PasswordFieldStyle}"></PasswordBox>
                 </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <CheckBox Margin="0 0 5 0 " Style="{DynamicResource CheckBoxStyle}"></CheckBox>
-                    <TextBlock FontSize="13" Style="{DynamicResource TextStyle}">Remember me</TextBlock>
-                </StackPanel>
             </StackPanel>
             
             <StackPanel>
