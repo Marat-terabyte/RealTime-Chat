@@ -18,7 +18,7 @@ namespace Client
             {
                 this.DragMove();
             }
-            catch { ; }
+            catch {; }
         }
     }
 }

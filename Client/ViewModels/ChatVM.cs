@@ -33,7 +33,7 @@ namespace Client.ViewModels
 
         private async void SendMessage(object obj)
         {
-            TextBox textBox = (TextBox) obj;
+            TextBox textBox = (TextBox)obj;
             Message message = new Message();
 
             message.Alignment = HorizontalAlignment.Right;
@@ -64,7 +64,7 @@ namespace Client.ViewModels
 
                         if (data.From == "")
                             data.Alignment = HorizontalAlignment.Center;
-                        
+
                         else
                             data.Alignment = HorizontalAlignment.Left;
                     });

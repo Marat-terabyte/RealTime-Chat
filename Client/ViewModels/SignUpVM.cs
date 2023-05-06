@@ -3,10 +3,7 @@ using Client.Views;
 using Models;
 using SocketData;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,7 +39,7 @@ namespace Client.ViewModels
 
             await Task.Run(() =>
             {
-                Account.Password = ((PasswordBox) obj).Password;
+                Account.Password = ((PasswordBox)obj).Password;
 
                 bool isUsernameValid = FieldChecker.IsValidStr(Account.Username);
                 bool isSecretWordValid = FieldChecker.IsValidStr(Account.SecretWord);

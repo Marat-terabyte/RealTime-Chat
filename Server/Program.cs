@@ -1,7 +1,7 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using Models;
+﻿using Models;
 using SocketData;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Server
 {
@@ -25,7 +25,7 @@ namespace Server
         private static Socket CreateSocket()
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            
+
             IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 7070);
             socket.Bind(ipEndPoint);
             socket.Listen();
@@ -41,7 +41,7 @@ namespace Server
 
             await Task.Run(() =>
             {
-                while(true)
+                while (true)
                 {
                     string? choice = new Data<Message>(conn).Receive(206).Text;
 
@@ -68,7 +68,7 @@ namespace Server
                             break;
                         }
                     }
-                    
+
                     else if (choice.Equals("1"))
                     {
                         bool isSignUp = _databaseContext.SignUp(account);

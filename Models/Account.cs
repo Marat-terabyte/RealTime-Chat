@@ -8,6 +8,7 @@ namespace Models
         private string _username;
         private string _password;
         private string _secretWord;
+        
         public string Username
         {
             get

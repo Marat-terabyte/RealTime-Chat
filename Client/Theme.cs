@@ -1,9 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Client
@@ -25,7 +22,7 @@ namespace Client
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
 
-            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\RealTime-Chat").SetValue("Theme", theme);
+            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Theme\RealTime-Chat").SetValue("Theme", theme);
         }
     }
 }

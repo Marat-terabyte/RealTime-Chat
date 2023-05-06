@@ -3,14 +3,10 @@ using Client.Views;
 using Models;
 using SocketData;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace Client.ViewModels
 {
@@ -47,7 +43,7 @@ namespace Client.ViewModels
 
             await Task.Run(() =>
             {
-                Account.Password = ((PasswordBox) obj).Password;
+                Account.Password = ((PasswordBox)obj).Password;
 
                 bool isUsernameValid = FieldChecker.IsValidStr(Account.Username);
                 bool isPasswordValid = FieldChecker.IsValidPassword(Account.Password);
@@ -68,6 +64,7 @@ namespace Client.ViewModels
                 _frame.Content = new Chat(_frame, _client, Account.Username);
                 return;
             }
+
             MessageBox.Show("Wrong username or password!");
         }
     }

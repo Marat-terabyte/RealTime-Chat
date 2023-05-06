@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Client.Models
@@ -16,7 +11,7 @@ namespace Client.Models
         private string _from;
 
         public Type Type { get; set; }
-        
+
         public string Text
         {
             get { return _text; }
@@ -38,11 +33,11 @@ namespace Client.Models
         }
 
         public string Time { get; set; }
-        
+
         [JsonIgnore]
         public HorizontalAlignment Alignment { get; set; }
 
-        
+
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
