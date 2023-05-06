@@ -25,18 +25,22 @@ namespace Client.ViewModels
             _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 7070);
 
-            while (true)
+            await Task.Run(() =>
             {
-                try
+
+                while (true)
                 {
-                    _client.Connect(ipEndPoint);
-                    break;
+                    try
+                    {
+                        _client.Connect(ipEndPoint);
+                        break;
+                    }
+                    catch (SocketException)
+                    {
+                        Task.Delay(3000);
+                    }
                 }
-                catch (SocketException)
-                {
-                    await Task.Delay(3000);
-                }
-            }
+            });
 
             OpenMainWindow();
         }
