@@ -22,7 +22,7 @@ namespace Client
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
 
-            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Theme\RealTime-Chat").SetValue("Theme", theme);
+            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\RealTime-Chat\Theme").SetValue("Theme", theme);
         }
     }
 }

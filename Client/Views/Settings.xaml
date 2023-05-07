@@ -10,14 +10,12 @@
     
     <Grid Style="{DynamicResource MainGridStyle}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Left">
-            <Button Width="70" Height="40" Style="{DynamicResource ToolButtonStyle}" Command="{Binding GoBackCommand}">
-                <Image Source="\Client;component\Resources\Images\Left-Arrow.png"/>
-            </Button>
+        <StackPanel Grid.RowSpan="2" Grid.Row="0" HorizontalAlignment="Right" Margin="0 10 10 0">
+            <Button Width="40" Height="40" Style="{DynamicResource ExitButtonStyle}" Command="{Binding GoBackCommand}"/>
         </StackPanel>
         
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -29,15 +27,23 @@
                 <TextBlock FontSize="22" HorizontalAlignment="Center" Margin="0 10 0 20" Style="{DynamicResource TextStyle}">Themes</TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Margin="0 0 40 0">
-                        <Button Height="280" Width="500" Margin="0 0 0 5" Command="{Binding ChangeThemeCommand}" CommandParameter="Light">
-                            <Image Source="/Client;component/Resources/Images/Light-Theme.png" Stretch="Fill"/>
+                        <Button Height="280" Width="480" Margin="0 0 0 5" Style="{DynamicResource ImageButtonStyle}" Command="{Binding ChangeThemeCommand}" CommandParameter="Light">
+                            <Image Source="/Client;component/Resources/Images/Light-Theme.png" Stretch="UniformToFill">
+                                <Image.Clip>
+                                    <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,478,278"></RectangleGeometry>
+                                </Image.Clip>
+                            </Image>
                         </Button>
                         <TextBlock FontSize="18" HorizontalAlignment="Center" Style="{DynamicResource TextStyle}">Light</TextBlock>
                     </StackPanel>
 
                     <StackPanel>
-                        <Button Height="280" Width="500" Margin="0 0 0 5" Command="{Binding ChangeThemeCommand}" CommandParameter="Dark">
-                            <Image Source="/Client;component/Resources/Images/Dark-Theme.png" Stretch="Fill"/>
+                        <Button Height="280" Width="480" Margin="0 0 0 5" Style="{DynamicResource ImageButtonStyle}" Command="{Binding ChangeThemeCommand}" CommandParameter="Dark">
+                            <Image Source="/Client;component/Resources/Images/Dark-Theme.png" Stretch="UniformToFill">
+                                <Image.Clip>
+                                    <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,478,278"></RectangleGeometry>
+                                </Image.Clip>
+                            </Image>
                         </Button>
                         <TextBlock FontSize="18" HorizontalAlignment="Center" Style="{DynamicResource TextStyle}">Dark</TextBlock>
                     </StackPanel>

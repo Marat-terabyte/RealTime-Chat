@@ -54,7 +54,7 @@ namespace Client
 
         private void LoadTheme()
         {
-            string? theme = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Theme\RealTime-Chat").GetValue("Theme") as string;
+            string? theme = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\RealTime-Chat\Theme").GetValue("Theme") as string;
 
             if (theme is null)
                 return;
