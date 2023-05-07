@@ -124,4 +124,48 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
+    <Style x:Key="ImageButtonStyle" TargetType="Button">
+        <Setter Property="BorderBrush" Value="#F8FCFB"></Setter>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10" BorderThickness="1"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#2C2E3E"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ExitButtonStyle" TargetType="Button">
+        <Setter Property="BorderBrush" Value="#F8FCFB"></Setter>
+        <Setter Property="Foreground" Value="#F8FCFB"></Setter>
+        <Setter Property="Background" Value="#34374C"></Setter>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="60" BorderThickness="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <TextBlock Foreground="{TemplateBinding Foreground}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">X</TextBlock>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#34374c87"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

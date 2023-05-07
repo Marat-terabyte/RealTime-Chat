@@ -13,7 +13,7 @@ namespace Server
         static void Main(string[] args)
         {
             Socket server = CreateSocket();
-            _databaseContext.ConnectToDatabase("localhost", "root", "realtime_chat", "11111111");
+            _databaseContext.ConnectToDatabase("localhost", "root", "realtime_chat", "B7@5#8$a");
 
             while (true)
             {
